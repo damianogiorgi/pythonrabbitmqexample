@@ -7,8 +7,8 @@ server = os.environ.get('RABBITMQ_HOST')
 queue = os.environ.get('RABBITMQ_QUEUE')
 sleep_time = float(os.environ.get('PRODUCER_SLEEP_TIME'))
 
-print("Sleeping for 2 seconds..")
-time.sleep(2)
+print("Sleeping for 5 seconds..")
+time.sleep(5)
 
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(host=server))
