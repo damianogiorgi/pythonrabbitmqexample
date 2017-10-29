@@ -22,4 +22,13 @@ services:
      - rabbitmq
   rabbitmq:
     image: rabbitmq
+  queuewatcher:
+    image: damiano7pixel/pyrabbitmqqueuewatcher
+    build: queuewatcher
+    environment:
+     - RABBITMQ_HOST=rabbitmq
+     - RABBITMQ_QUEUE=messages
+    depends_on:
+    - rabbitmq
+
 
