@@ -1,0 +1,25 @@
+version: '2'
+services:
+  producer:
+    image: "damiano7pixel/pyrabbitmqproducer"
+    environment: 
+     - RABBITMQ_HOST=rabbitmq
+     - RABBITMQ_QUEUE=messages
+     - PRODUCER_SLEEP_TIME=0.1
+    tty: true
+    depends_on: 
+     - rabbitmq
+    build: producer
+  consumer:
+    environment:
+     - RABBITMQ_HOST=rabbitmq
+     - RABBITMQ_QUEUE=messages
+     - CONSUMER_SLEEP_TIME=0.2
+#    tty: true
+    image: "damiano7pixel/pyrabbitmqconsumer"
+    build: consumer
+    depends_on:
+     - rabbitmq
+  rabbitmq:
+    image: rabbitmq
+
